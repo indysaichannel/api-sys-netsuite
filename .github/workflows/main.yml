@@ -3,7 +3,7 @@ name: Reusable Workflow To Deploy MuleSoft Application
 on:
   push:
     branches:
-      - main
+      - hotfix-v1.0.1
 
 jobs:
   build:
@@ -23,16 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "zulu"
-          java-version: 17
-
-      # - name: Build JAR
-      #   run: mvn clean package -DmuleDeploy
-
-      - name: Publish to Exchange
-        run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
-          -Danypoint.username="${{ secrets.USER }}" \
-          -Danypoint.password="${{ secrets.PASS }}"
+          java-version: 17 
 
 
   deployprod:
